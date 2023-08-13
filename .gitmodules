@@ -1,0 +1,9 @@
+[submodule "Server"]
+	path = Server
+	url = https://github.com/CadenScharpf/Chore-Scheduler-Server
+[submodule "Web"]
+	path = Web
+	url = https://github.com/CadenScharpf/Chore-Scheduler-Web
+[submodule "Database"]
+	path = Database
+	url = https://github.com/CadenScharpf/Chore-Scheduler-DB
