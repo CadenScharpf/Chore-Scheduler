@@ -7,9 +7,18 @@ services:
       - ./Server/:/usr/src/app
     environment:
       NODE_ENV: ${NODE_ENV}
+    ports:
+      - "3000:3000"
     # Other configurations...
 
-  #react-app:
-   # build:
-    #  context: ./react-app
+  web:
+    build:
+     context: ./Web
+    volumes:
+      - ./Web/:/usr/src/app
+    environment:
+      NODE_ENV: ${NODE_ENV}
+    ports:
+      - "3001:3000"
+
     # Other configurations...
