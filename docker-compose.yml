@@ -1,0 +1,15 @@
+version: '3'
+services:
+  server:
+    build:
+      context: ./Server
+    volumes:
+      - ./Server/:/usr/src/app
+    environment:
+      NODE_ENV: ${NODE_ENV}
+    # Other configurations...
+
+  #react-app:
+   # build:
+    #  context: ./react-app
+    # Other configurations...
