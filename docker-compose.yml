@@ -9,7 +9,6 @@ services:
       NODE_ENV: ${NODE_ENV}
     ports:
       - "3000:3000"
-    # Other configurations...
 
   web:
     build:
@@ -20,7 +19,15 @@ services:
       - server
     environment:
       NODE_ENV: ${NODE_ENV}
+      REACT_APP_BACKEND_URL: http://server:3000
     ports:
       - "3001:3001"
 
-    # Other configurations...
+  proxy: 
+    build:
+      context: ./Proxy
+    depends_on:
+      - server
+      - web
+    ports:
+      - "80:80"
