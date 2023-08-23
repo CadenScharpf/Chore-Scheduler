@@ -27,3 +27,9 @@ FROM common AS web
 COPY --from=deps /app/packages/web/node_modules/ /app/packages/web/node_modules
 WORKDIR /app/packages/web
 CMD [ "pnpm", "start" ]
+
+FROM nginx:latest AS proxy
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

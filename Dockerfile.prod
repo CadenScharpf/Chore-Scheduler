@@ -25,4 +25,3 @@ FROM common AS web
 COPY --from=prod-deps /app/packages/web/node_modules/ /app/packages/web/node_modules
 WORKDIR /app/packages/web
 CMD [ "pnpm", "start" ]
-
