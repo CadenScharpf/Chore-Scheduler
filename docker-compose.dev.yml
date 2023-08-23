@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - /home/caden/.local/share/pnpm/store:/pnpm/store
-      - ./packages/server:/app
+      - ./:/app
 
   web:
     build:
@@ -14,7 +14,7 @@ services:
      dockerfile: Dockerfile.dev
     volumes:
       - /home/caden/.local/share/pnpm/store:/pnpm/store
-      - ./packages/web:/app
+      - ./:/app
 
   #proxy: 
   #  build:
