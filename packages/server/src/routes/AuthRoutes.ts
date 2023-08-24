@@ -3,7 +3,7 @@ import SessionUtil from "@src/util/SessionUtil";
 import AuthService from "@src/services/AuthService";
 
 import { IReq, IRes } from "./types/express/misc";
-import { ISessionUser } from "@src/models/User";
+import { ISessionUser } from "chore-scheduler-common";
 
 // **** Types **** //
 
@@ -37,7 +37,7 @@ async function login(req: IReq<ILoginReq>, res: IRes) {
     phone: user.phone,
   };
   await SessionUtil.addSessionData(res, sessionUser);
-/*   res.json({ user: sessionUser }); */
+  res.json({ user: sessionUser });
   // Return
   return res.status(HttpStatusCodes.OK).end();
 }

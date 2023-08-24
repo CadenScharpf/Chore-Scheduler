@@ -4,7 +4,8 @@ import app from '@src/server';
 
 import UserRepo from '@src/repos/UserRepo';
 import PwdUtil from '@src/util/PwdUtil';
-import User, { UserRoles } from '@src/models/User';
+import User from '@src/models/User';
+import { UserRoles } from 'chore-scheduler'
 import { Errors } from '@src/services/AuthService';
 
 import FullPaths from '@src/routes/constants/FullPaths';

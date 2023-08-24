@@ -1,9 +1,8 @@
 import HttpStatusCodes from '@src/constants/HttpStatusCodes';
 
 import UserService from '@src/services/UserService';
-import { IUser } from '@src/models/User';
+import { IUser } from 'chore-scheduler-common';
 import { IReq, IRes } from './types/express/misc';
-
 
 // **** Functions **** //
 

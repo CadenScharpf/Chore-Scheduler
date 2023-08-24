@@ -1,28 +1,4 @@
-//import { UserRoles, IUser, ISessionUser } from '@chore-scheduler/types';
-
-export enum UserRoles {
-  Standard,
-  Admin,
-}
-
-// **** Types **** //
-
-export interface IUser {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  role?: UserRoles;
-  pwdHash?: string;
-}
-
-export interface ISessionUser {
-  id: number;
-  email: string;
-  name: string;
-  role: IUser['role'];
-  phone: string;
-}
+import { UserRoles, IUser, ISessionUser } from 'chore-scheduler-common';
 
 
 // **** Variables **** //
@@ -38,7 +14,7 @@ function new_(
   name?: string,
   email?: string,
   role?: UserRoles,
-  pwdHash?: string,
+pwdHash?: string,
   id?: number, // id last cause usually set by db
   phone?: string,
 ): IUser {

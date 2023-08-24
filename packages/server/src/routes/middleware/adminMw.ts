@@ -8,7 +8,7 @@ import { JwtPayload } from 'jsonwebtoken';
 import HttpStatusCodes from '@src/constants/HttpStatusCodes';
 
 import SessionUtil from '@src/util/SessionUtil';
-import { ISessionUser, UserRoles } from '@src/models/User';
+import { ISessionUser, UserRoles } from 'chore-scheduler-common';
 
 
 // **** Variables **** //

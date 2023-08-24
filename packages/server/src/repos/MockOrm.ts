@@ -2,7 +2,7 @@
 
 import jsonfile from 'jsonfile';
 
-import { IUser } from '@src/models/User';
+import { IUser } from 'chore-scheduler-common';
 
 
 // **** Variables **** //

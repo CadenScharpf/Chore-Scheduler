@@ -1,6 +1,7 @@
 import { SuperTest, Test, Response } from 'supertest';
 
-import User, { UserRoles } from '@src/models/User';
+import User from '@src/models/User';
+import { UserRoles } from 'chore-scheduler-common'
 import UserRepo from '@src/repos/UserRepo';
 import PwdUtil from '@src/util/PwdUtil';
 import FullPaths from '@src/routes/constants/FullPaths';

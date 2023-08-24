@@ -1,4 +1,4 @@
-import { IUser } from '@src/models/User';
+import { IUser } from 'chore-scheduler-common';
 import { getRandomInt } from '@src/util/misc';
 import orm from './MockOrm';
 

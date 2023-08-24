@@ -1,21 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from "react";
+import logo from "./logo.svg";
 import Cookies from "js-cookie";
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashboard from "./pages/private/Dashboard";
+import Login from "./pages/public/Login";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function App() {
-  const [jwt, setJwt] = React.useState<string | undefined>(undefined);
-  return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
+  const [user, setUser] = React.useState(undefined);
+  
+  React.useEffect(() => {
+    if (!Cookies.get("token")) {
+      
+    }
+  }, []);
+
+  return user ? (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  ) : (
+    <></>
   );
 }
 
 export default App;
 
-{/* {jwt ? <div>Logged in</div> : <div>Not logged in</div>}
+{
+  /* {jwt ? <div>Logged in</div> : <div>Not logged in</div>}
 <button
 onClick={() => {
 const data = {
@@ -39,4 +56,5 @@ body: JSON.stringify(data),
 }}
 >
 Login
-</button> */}
+</button> */
+}

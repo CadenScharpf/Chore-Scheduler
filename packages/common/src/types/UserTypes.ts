@@ -1,10 +1,8 @@
+// **** User Types **** //
 export enum UserRoles {
     Standard,
     Admin,
   }
-  
-  // **** Types **** //
-  
   export interface IUser {
     id: number;
     name: string;
@@ -13,7 +11,6 @@ export enum UserRoles {
     role?: UserRoles;
     pwdHash?: string;
   }
-  
   export interface ISessionUser {
     id: number;
     email: string;
