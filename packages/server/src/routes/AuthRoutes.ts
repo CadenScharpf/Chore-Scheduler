@@ -3,21 +3,7 @@ import SessionUtil from "@src/util/SessionUtil";
 import AuthService from "@src/services/AuthService";
 
 import { IReq, IRes } from "./types/express/misc";
-import { ISessionUser } from "chore-scheduler-common";
-
-// **** Types **** //
-
-interface ILoginReq {
-  email: string;
-  password: string;
-}
-
-interface IRegisterReq {
-  name: string;
-  email: string;
-  password: string;
-  phone: string;
-}
+import { ISessionUser, ILoginReq, IRegisterReq } from "chore-scheduler-common";
 
 // **** Functions **** //
 

@@ -9,7 +9,7 @@ export interface IReq<T = void> extends e.Request {
   body: T;
 }
 
-export interface IRes extends e.Response {
+export interface IRes<T = void> extends e.Response {
   locals: {
     sessionUser?: ISessionUser;
   };
