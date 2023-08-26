@@ -9,7 +9,7 @@ export default {
   NodeEnv: (process.env.NODE_ENV ?? ''),
   Port: (process.env.PORT ?? 0),
   CookieProps: {
-    Key: 'Chore-Scheduler',
+    Key: 'chore-scheduler-token',
     Secret: (process.env.COOKIE_SECRET ?? ''),
     // Casing to match express cookie options
     Options: {

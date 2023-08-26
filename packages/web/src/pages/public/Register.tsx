@@ -4,7 +4,7 @@ import * as Yup from "yup";
 
 import {IUser} from "chore-scheduler-common";
 import AuthService from "../../services/auth.service";
-import { INewUser } from "chore-scheduler-common/src/types/UserTypes";
+import { INewUser } from "chore-scheduler-common";
 
 const Register: React.FC = () => {
   const [successful, setSuccessful] = useState<boolean>(false);

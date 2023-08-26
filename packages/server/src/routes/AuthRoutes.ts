@@ -4,10 +4,15 @@ import AuthService from "@src/services/AuthService";
 
 import { IReq, IRes } from "./types/express/misc";
 import { ISessionUser, ILoginReq, IRegisterReq, ILoginRes, IRegisterRes } from "chore-scheduler-common";
-import { INewUser } from "chore-scheduler-common/src/types/UserTypes";
+import { INewUser } from "chore-scheduler-common";
 
 // **** Functions **** //
 
+
+async function me(req: IReq, res: IRes) {
+  const user = await AuthService.me(req);
+  return res.json({ user });
+}
 /**
  * Login a user.
  **/
@@ -50,4 +55,5 @@ export default {
   login,
   logout,
   register,
+  me,
 } as const;

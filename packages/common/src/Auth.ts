@@ -1,4 +1,4 @@
-import { INewUser, ISessionUser } from "./UserTypes";
+import { INewUser, ISessionUser } from "./User";
 
 // **** Request / Response Types **** //
 

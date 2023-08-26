@@ -5,9 +5,11 @@ import { tick } from '@src/util/misc';
 
 import HttpStatusCodes from '@src/constants/HttpStatusCodes';
 import { RouteError } from '@src/other/classes';
-import { IUser } from 'chore-scheduler-common';
+import { IUser, isSessionUser } from 'chore-scheduler-common';
 import User from '@src/models/User';
-import { INewUser } from 'chore-scheduler-common/src/types/UserTypes';
+import { INewUser, ISessionUser } from 'chore-scheduler-common';
+import SessionUtil from '@src/util/SessionUtil';
+import { IReq } from '@src/routes/types/types';
 
 
 
@@ -24,6 +26,17 @@ export const Errors = {
 
 // **** Functions **** //
 
+async function me(req: IReq) {
+  await SessionUtil.getSessionData<ISessionUser>(req).then((user: ISessionUser | undefined | string) => {
+    if (!(user && isSessionUser(user)))  {
+      throw new RouteError(
+        HttpStatusCodes.UNAUTHORIZED,
+        Errors.Unauth,
+      );
+    }
+    return user;
+  }
+  )}
 /**
  * Login a user.
  */
@@ -69,4 +82,5 @@ async function register(newUser: INewUser): Promise<IUser> {
 export default {
   login,
   register,
+  me,
 } as const;

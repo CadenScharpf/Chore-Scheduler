@@ -9,6 +9,7 @@ const Paths = {
   Base: '/api',
   Auth: {
     Base: '/auth',
+    Me: '/me',
     Login: '/login',
     Logout: '/logout',
     Register: '/register',

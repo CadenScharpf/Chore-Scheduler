@@ -32,6 +32,12 @@ authRouter.post(
   AuthRoutes.login,
 );
 
+// Get current user
+authRouter.get(
+  Paths.Auth.Me,
+  AuthRoutes.me,
+);
+
 // Logout user
 authRouter.get(
   Paths.Auth.Logout,

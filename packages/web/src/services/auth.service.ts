@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { ILoginRes, IRegisterRes, ISessionUser } from "chore-scheduler-common";
-import { INewUser } from "chore-scheduler-common/src/types/UserTypes";
+import { INewUser } from "chore-scheduler-common";
 
 const API_URL = "/api/auth/";
 
