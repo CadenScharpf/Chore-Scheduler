@@ -18,3 +18,9 @@ export enum UserRoles {
     role: IUser['role'];
     phone: string;
   }
+  export interface INewUser {
+    name: string;
+    email: string;
+    phone: string;
+    password: string;
+  }

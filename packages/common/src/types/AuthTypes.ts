@@ -1,4 +1,4 @@
-import { ISessionUser } from "./UserTypes";
+import { INewUser, ISessionUser } from "./UserTypes";
 
 // **** Request / Response Types **** //
 
@@ -12,10 +12,7 @@ export interface ILoginRes {
 }
 
 export interface IRegisterReq {
-  name: string;
-  email: string;
-  password: string;
-  phone: string;
+  user: INewUser;
 }
 
 export interface IRegisterRes {

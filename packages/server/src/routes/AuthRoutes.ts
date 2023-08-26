@@ -4,6 +4,7 @@ import AuthService from "@src/services/AuthService";
 
 import { IReq, IRes } from "./types/express/misc";
 import { ISessionUser, ILoginReq, IRegisterReq, ILoginRes, IRegisterRes } from "chore-scheduler-common";
+import { INewUser } from "chore-scheduler-common/src/types/UserTypes";
 
 // **** Functions **** //
 
@@ -32,9 +33,7 @@ async function login(req: IReq<ILoginReq>, res: IRes<ILoginRes>) {
  * Regester a new user.
  */
 async function register(req: IReq<IRegisterReq>, res: IRes<IRegisterRes>) {
-  const { name, email, password, phone } = req.body;
-  // Login
-  const user = await AuthService.register(name, email, password, phone);
+  const user = await AuthService.register(req.body.user);
 }
 
 /**

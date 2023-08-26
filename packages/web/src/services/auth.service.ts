@@ -1,12 +1,12 @@
 import axios, { AxiosResponse } from "axios";
 import { ILoginRes, IRegisterRes, ISessionUser } from "chore-scheduler-common";
+import { INewUser } from "chore-scheduler-common/src/types/UserTypes";
 
 const API_URL = "/api/auth/";
 
-const register = (email: string, password: string) => {
+const register = (newUser: INewUser) => {
   return axios.post(API_URL + "register", {
-    email,
-    password,
+    user: newUser,
   }).then((response: AxiosResponse<IRegisterRes>) => {
     let user: ISessionUser = response.data.user;
       localStorage.setItem("user", JSON.stringify(user));
@@ -28,14 +28,13 @@ const login = (email: string, password: string) => {
 
 const logout = () => {
   localStorage.removeItem("user");
-  return axios.post(API_URL + "signout").then((response) => {
+  return axios.post(API_URL + "logout").then((response) => {
     return response.data;
   });
 };
 
 const getCurrentUser = () => {
-  let user: ISessionUser = JSON.parse(localStorage.getItem("user") ?? "{}");
-  return user;
+  return JSON.parse(localStorage.getItem("user") ?? "null");
 };
 
 const AuthService = {

@@ -7,6 +7,8 @@ import HttpStatusCodes from '@src/constants/HttpStatusCodes';
 import { RouteError } from '@src/other/classes';
 import { IUser } from 'chore-scheduler-common';
 import User from '@src/models/User';
+import { INewUser } from 'chore-scheduler-common/src/types/UserTypes';
+
 
 
 // **** Variables **** //
@@ -49,7 +51,12 @@ async function login(email: string, password: string): Promise<IUser> {
   return user;
 }
 
-async function register(name: string, email: string, password: string, phone: string): Promise<IUser> {
+
+
+
+
+async function register(newUser: INewUser): Promise<IUser> {
+  const { name, email, password, phone } = newUser;
   const pwdHash = await PwdUtil.getHash(password);
   const user  = User.from({name, email, pwdHash, phone})
   await UserRepo.add(user);
