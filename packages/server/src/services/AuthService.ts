@@ -68,12 +68,19 @@ async function login(email: string, password: string): Promise<IUser> {
 
 
 
-async function register(newUser: INewUser): Promise<IUser> {
-  const { name, email, password, phone } = newUser;
+async function register(_newUser: INewUser): Promise<IUser> {
+  const { name, email, password, phone } = _newUser;
   const pwdHash = await PwdUtil.getHash(password);
-  const user  = User.from({name, email, pwdHash, phone})
-  await UserRepo.add(user);
-  return user;
+  const user = await UserRepo.getOne(email);
+  if (user) {
+    throw new RouteError(
+      HttpStatusCodes.CONFLICT,
+      `User with email "${email}" already exists`,
+    );
+  }
+  const newUser  = User.from({name, email, pwdHash, phone})
+  await UserRepo.add(newUser);
+  return newUser;
 }
 
 

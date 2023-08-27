@@ -4,7 +4,7 @@ import AuthService from "../../services/auth.service";
 const Profile: React.FC = () => {
   const currentUser = AuthService.getCurrentUser();
 
-  return (
+  return  currentUser? (
     <div className="container">
       <header className="jumbotron">
         <h3>
@@ -21,7 +21,7 @@ const Profile: React.FC = () => {
         <strong>role:</strong>v{currentUser.role}
       </p>
     </div>
-  );
+  ): (<div></div>);
 };
 
 export default Profile;

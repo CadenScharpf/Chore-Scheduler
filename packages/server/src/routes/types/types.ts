@@ -1,6 +1,6 @@
 import * as e from 'express';
 import { Query } from 'express-serve-static-core';
-import { ISessionUser } from 'chore-scheduler';
+import { ISessionUser } from 'chore-scheduler-common';
 
 // **** Express **** //
 
