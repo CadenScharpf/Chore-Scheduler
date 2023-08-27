@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { BrowserRouter } from 'react-router-dom';
+import { ProvideAuth } from './hooks/auth';
 
 
 const root = ReactDOM.createRoot(
@@ -14,7 +15,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <ProvideAuth>
       <App />
+    </ProvideAuth>
     </BrowserRouter>
   </React.StrictMode>
 );

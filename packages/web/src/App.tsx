@@ -13,6 +13,7 @@ import Dashboard from "./pages/user/Dashboard";
 import Profile from "./pages/user/Profile";
 
 import EventBus, { EventMap } from "./common/EventBus";
+import { useAuth } from "./hooks/auth";
 
 interface AuthBus extends EventMap {
   "logout": () => void;
@@ -20,27 +21,15 @@ interface AuthBus extends EventMap {
 
 const App: React.FC = () => {
   //const [showAdminBoard, setShowAdminBoard] = useState<boolean>(false);
-  const [currentUser, setCurrentUser] = useState<IUser | undefined>(undefined);
-
-  const authBus = EventBus<AuthBus>();
+  const auth = useAuth();
   useEffect(() => {
-    const user = AuthService.getCurrentUser();
-
-    if (user) {
-      setCurrentUser(user);
-    }
-
-    authBus.once("logout", logOut);
-  }, [authBus]);
-
-  const logOut = () => {
-    AuthService.logout();
-    setCurrentUser(undefined);
-    //setShowAdminBoard(false);
-  };
+    //const user = auth.autoSignIn();
+  }, []);
+  const authBus = EventBus<AuthBus>();
 
   return (
-    
+
+
       <div className="container mt-3">
         <Routes>
           <Route path="/" element={<Dashboard />} />
@@ -50,6 +39,8 @@ const App: React.FC = () => {
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
+
+    
   );
 };
 

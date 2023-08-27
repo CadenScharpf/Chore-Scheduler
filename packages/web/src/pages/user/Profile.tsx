@@ -1,27 +1,29 @@
 import React from "react";
 import AuthService from "../../services/auth.service";
+import { ISessionUser } from "chore-scheduler-common";
+import { useAuth } from "../../hooks/auth";
 
 const Profile: React.FC = () => {
-  const currentUser = AuthService.getCurrentUser();
-
-  return (
+  const authContext = useAuth();
+  const user = authContext.user as ISessionUser;
+  return user? (
     <div className="container">
       <header className="jumbotron">
         <h3>
-          <strong>{currentUser.name}</strong> Profile
+          <strong>{user.name}</strong> Profile
         </h3>
       </header>
       <p>
-        <strong>Id:</strong> {currentUser.id}
+        <strong>Id:</strong> {user.id}
       </p>
       <p>
-        <strong>Email:</strong> {currentUser.email}
+        <strong>Email:</strong> {user.email}
       </p>
       <p>
-        <strong>role:</strong>v{currentUser.role}
+        <strong>role:</strong>v{user.role}
       </p>
     </div>
-  );
+  ): (<div></div>);
 };
 
 export default Profile;

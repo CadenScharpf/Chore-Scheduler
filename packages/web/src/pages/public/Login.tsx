@@ -5,11 +5,13 @@ import * as Yup from "yup";
 
 import AuthService from "../../services/auth.service";
 import { Box } from "@mui/material";
+import { useAuth } from "../../hooks/auth";
 
 type Props = {}
 
 const Login: React.FC<Props> = () => {
   let navigate: NavigateFunction = useNavigate();
+  const auth = useAuth();
 
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
@@ -33,10 +35,10 @@ const Login: React.FC<Props> = () => {
     setMessage("");
     setLoading(true);
 
-    AuthService.login(username, password).then(
+    auth.login(username, password).then(
       () => {
-        navigate("/profile");
-        window.location.reload();
+        //navigate("/profile");
+        //window.location.reload();
       },
       (error) => {
         const resMessage =
@@ -45,7 +47,6 @@ const Login: React.FC<Props> = () => {
             error.response.data.message) ||
           error.message ||
           error.toString();
-
         setLoading(false);
         setMessage(resMessage);
       }

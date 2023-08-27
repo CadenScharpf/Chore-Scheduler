@@ -1,7 +1,5 @@
 import { INewUser, ISessionUser } from "./User";
 
-// **** Request / Response Types **** //
-
 export interface ILoginReq {
   email: string;
   password: string;
