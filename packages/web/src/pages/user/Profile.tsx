@@ -21,8 +21,8 @@ const Profile: React.FC = () => {
         <strong>Email:</strong> {auth.user.email}
       </p>
       <p>
-        <strong>Role:</strong>{
-          auth.user.role === UserRoles.Admin ? "Admin" : "User"
+        <strong>Role: </strong>{
+          auth.user.role && UserRoles[auth.user.role]
         }
       </p>
     </div>
