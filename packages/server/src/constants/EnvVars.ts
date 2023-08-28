@@ -19,6 +19,7 @@ export default {
       maxAge: Number(process.env.COOKIE_EXP ?? 0),
       domain: (process.env.COOKIE_DOMAIN ?? ''),
       secure: (process.env.SECURE_COOKIE === 'true'),
+      samesite: (process.env.SAME_SITE ?? ''),
     },
   },
   Jwt: {
