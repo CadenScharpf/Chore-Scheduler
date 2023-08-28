@@ -18,7 +18,9 @@ const Profile: React.FC = () => {
         <strong>Email:</strong> {auth.user.email}
       </p>
       <p>
-        <strong>role:</strong>{auth.user.role}
+        <strong>Role:</strong>{
+          
+        }
       </p>
     </div>
   ): (<div></div>);

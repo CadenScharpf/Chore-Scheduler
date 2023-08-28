@@ -16,16 +16,20 @@ import { useAuth } from "./hooks/auth";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Landing from "./pages/public/Landing";
 import NavBar from "./components/NavBar";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
+
+const layoutParams = {
+  navHeight: 64,
+}
 const App: React.FC = () => {
   const auth = useAuth();
   return (
     <>
-      <nav>
+      <Box sx={{height: layoutParams.navHeight}} component="nav">
         <NavBar />
-      </nav>
-      <Container sx={{width:  '100%'}}>
+      </Box>
+      <Box sx={{height:`calc(100vh - ${layoutParams.navHeight}px)`}} component="section">
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -40,7 +44,7 @@ const App: React.FC = () => {
             }
           />
         </Routes>
-      </Container>
+      </Box>
     </>
   );
 };

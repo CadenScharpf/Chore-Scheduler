@@ -10,13 +10,13 @@
             "type": "node",
             "request": "attach",
             "name": "Attach to Docker Process",
-            "address": "127.0.0.1", 
+            "restart": true,
+            //"address": "127.0.0.1", 
             "port": 9229, // Must match the port used in the nodemon.json configuration
             "sourceMaps": true,
             //"outFiles": ["${workspaceFolder}/out"],
             "localRoot": "${workspaceFolder}",
             "remoteRoot": "/app",
-
           }
           
 
