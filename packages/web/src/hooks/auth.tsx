@@ -1,8 +1,20 @@
-import { INewUser, ISessionUser, isSessionUser } from "chore-scheduler-common";
+import { INewUser, ISessionUser} from "chore-scheduler-common";
 import { createContext, useState, useContext, useEffect } from "react";
 import AuthService from "../services/auth.service";
 import axios, { AxiosError } from "axios";
 import Cookies from "js-cookie";
+
+
+export function isSessionUser(user: any): user is ISessionUser {
+  return (
+      user &&
+      typeof user.id === 'number' &&
+      typeof user.email === 'string' &&
+      typeof user.name === 'string' &&
+      typeof user.role === 'string' &&
+      typeof user.phone === 'string'
+  );
+}
 
 interface IAuthContext {
     user: ISessionUser | null;
@@ -33,7 +45,7 @@ function useProvideAuth(): IAuthContext{
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => { Cookies.get("token") && autoSignIn(); }, []);
+  useEffect(() => { Cookies.get("chore-scheduler-token") && autoSignIn(); }, []);
 
   async function login(username: string, password: string) {
     setLoading(true);

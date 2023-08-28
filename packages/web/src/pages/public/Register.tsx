@@ -5,8 +5,10 @@ import * as Yup from "yup";
 import {IUser} from "chore-scheduler-common";
 import AuthService from "../../services/auth.service";
 import { INewUser } from "chore-scheduler-common";
+import { useAuth } from "../../hooks/auth";
 
 const Register: React.FC = () => {
+  const auth = useAuth();
   const [successful, setSuccessful] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
@@ -45,9 +47,8 @@ const Register: React.FC = () => {
 
   const handleRegister = (formValue: INewUser) => {
 
-    AuthService.register( formValue).then(
+    auth.register( formValue).then(
       (response) => {
-        setMessage(response.name);
         setSuccessful(true);
       },
       (error) => {

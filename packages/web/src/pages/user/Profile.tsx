@@ -1,24 +1,25 @@
 import React from "react";
 import AuthService from "../../services/auth.service";
+import { useAuth } from "../../hooks/auth";
 
 const Profile: React.FC = () => {
-  const currentUser = AuthService.getCurrentUser();
 
-  return  currentUser? (
+  const auth = useAuth();
+  return  auth.user? (
     <div className="container">
       <header className="jumbotron">
         <h3>
-          <strong>{currentUser.name}</strong> Profile
+          <strong>{auth.user.name}</strong> Profile
         </h3>
       </header>
       <p>
-        <strong>Id:</strong> {currentUser.id}
+        <strong>Id:</strong> {auth.user.id}
       </p>
       <p>
-        <strong>Email:</strong> {currentUser.email}
+        <strong>Email:</strong> {auth.user.email}
       </p>
       <p>
-        <strong>role:</strong>v{currentUser.role}
+        <strong>role:</strong>{auth.user.role}
       </p>
     </div>
   ): (<div></div>);

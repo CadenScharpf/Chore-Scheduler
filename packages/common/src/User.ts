@@ -25,13 +25,3 @@ export enum UserRoles {
     password: string;
   }
 
-  export function isSessionUser(user: any): user is ISessionUser {
-    return (
-        user &&
-        typeof user.id === 'number' &&
-        typeof user.email === 'string' &&
-        typeof user.name === 'string' &&
-        typeof user.role === 'string' &&
-        typeof user.phone === 'string'
-    );
-}

@@ -21,7 +21,7 @@ interface AuthBus extends EventMap {
 
 
 const App: React.FC = () => {
-  //const auth = useAuth();
+  const auth = useAuth();
   //const [showAdminBoard, setShowAdminBoard] = useState<boolean>(false);
 /*   const authBus = EventBus<AuthBus>();
   useEffect(() => {
