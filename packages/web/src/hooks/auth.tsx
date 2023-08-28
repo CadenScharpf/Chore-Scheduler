@@ -49,13 +49,13 @@ function useProvideAuth(): IAuthContext{
 
   async function login(username: string, password: string) {
     setLoading(true);
-    try {
-      try {
-        const user = await AuthService.login(username, password);
-      } catch (err) { }
-    } finally {
-      return setLoading(false);
-    }
+    await AuthService.login(username, password).then((sessionUser) => {
+      setUser(sessionUser);
+    }).catch((err: AxiosError) => { 
+      console.log(err);
+    }).finally(() => {
+      setLoading(false);
+    });
   }
 
   function logout() {

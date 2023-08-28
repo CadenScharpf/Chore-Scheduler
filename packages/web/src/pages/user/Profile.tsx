@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AuthService from "../../services/auth.service";
 import { useAuth } from "../../hooks/auth";
 
 const Profile: React.FC = () => {
-
   const auth = useAuth();
   return  auth.user? (
     <div className="container">
