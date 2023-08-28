@@ -111,6 +111,7 @@
     "express-serve-static-core": "^0.1.1",
     "js-cookie": "^3.0.5",
     "react-validation": "^3.0.7",
+    "ts-loader": "^9.4.4",
     "validator": "^13.11.0"
   },
   "jest": {
