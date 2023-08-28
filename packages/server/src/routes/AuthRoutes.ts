@@ -11,7 +11,7 @@ import { INewUser } from "chore-scheduler-common";
 
 async function me(req: IReq, res: IRes) {
   const user = await AuthService.me(req);
-  return res.json({ user });
+  return res.json({ user: user });
 }
 /**
  * Login a user.

@@ -11,7 +11,7 @@ export function isSessionUser(user: any): user is ISessionUser {
       typeof user.id === 'number' &&
       typeof user.email === 'string' &&
       typeof user.name === 'string' &&
-      typeof user.role === 'string' &&
+      typeof user.role === 'number' &&
       typeof user.phone === 'string'
   );
 }

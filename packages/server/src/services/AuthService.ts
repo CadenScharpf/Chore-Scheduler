@@ -5,13 +5,22 @@ import { tick } from '@src/util/misc';
 
 import HttpStatusCodes from '@src/constants/HttpStatusCodes';
 import { RouteError } from '@src/other/classes';
-import { IUser, isSessionUser } from 'chore-scheduler-common';
+import { IUser } from 'chore-scheduler-common';
 import User from '@src/models/User';
 import { INewUser, ISessionUser } from 'chore-scheduler-common';
 import SessionUtil from '@src/util/SessionUtil';
 import { IReq } from '@src/routes/types/types';
 
-
+export function isSessionUser(user: any): user is ISessionUser {
+  return (
+      user &&
+      typeof user.id === 'number' &&
+      typeof user.email === 'string' &&
+      typeof user.name === 'string' &&
+      typeof user.role === 'number' &&
+      typeof user.phone === 'string'
+  );
+}
 
 // **** Variables **** //
 
@@ -26,17 +35,25 @@ export const Errors = {
 
 // **** Functions **** //
 
-async function me(req: IReq) {
-  await SessionUtil.getSessionData<ISessionUser>(req).then((user: ISessionUser | undefined | string) => {
-    if (!(user && isSessionUser(user)))  {
-      throw new RouteError(
-        HttpStatusCodes.UNAUTHORIZED,
-        Errors.Unauth,
-      );
-    }
-    return user;
+async function me(req: IReq): Promise<ISessionUser> {
+  var user: ISessionUser = {
+    id: 0,
+    email: '',
+    name: '',
+    role: 1,
+    phone: '',
   }
-  )}
+  await SessionUtil.getSessionData<ISessionUser>(req).then((_user: ISessionUser | undefined | string) => {
+    const {id, email, name, role, phone} = _user as ISessionUser;
+    user = {id, email, name, role, phone} as ISessionUser;
+    console.log(user);
+    return user as ISessionUser;
+  }
+  
+  )
+
+  return user as ISessionUser;
+}
 /**
  * Login a user.
  */
