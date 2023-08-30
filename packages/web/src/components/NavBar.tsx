@@ -2,9 +2,10 @@ import { Box, Stack, SxProps } from "@mui/material";
 import React from "react";
 import { useAuth } from "../hooks/auth";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function NavBar() {
+  const navigate = useNavigate();
   const auth = useAuth();
 
   const styles: Record<string, SxProps> = {
@@ -27,13 +28,13 @@ function NavBar() {
       </Stack>
       <Stack direction={"row"} spacing={2} sx={{ ...styles.stack }}>
         <Link to={"/"}>Home</Link>
-        <Link to={"/dashboard"}>Dashboard</Link>
+        <Link to={"/user"}>Dashboard</Link>
       </Stack>
       <Stack direction={"row"} spacing={2} sx={{ ...styles.stack }}>
         {auth.user ? (
           <>
-            <Link to={"/profile"}>{auth.user.name}</Link>
-            <button onClick={() => auth.logout()}>Logout</button>
+            <Link to={"/user/profile"}>{auth.user.name}</Link>
+            <button onClick={() => {auth.logout(); navigate('/') }}>Logout</button>
           </>
         ) : (
           <Link to={"/login"}>Login</Link>

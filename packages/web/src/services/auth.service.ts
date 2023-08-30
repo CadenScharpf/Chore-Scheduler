@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { ILoginRes, IRegisterRes, ISessionUser } from "chore-scheduler-common";
 import { INewUser } from "chore-scheduler-common";
+import Cookies from "js-cookie";
 
 const API_URL = "/api/auth/";
 
@@ -28,9 +29,7 @@ const login = (email: string, password: string) => {
 
 const logout = () => {
   localStorage.removeItem("user");
-  return axios.post(API_URL + "logout").then((response) => {
-    return response.data;
-  });
+  Cookies.remove("chore-scheduler-token");
 };
 
 const getCurrentUser = (): ISessionUser | null => {
