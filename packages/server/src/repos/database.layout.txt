@@ -8,6 +8,5 @@
     },
 
 Roles: 
-- -1: any
 - 0: user
 - 1: admin

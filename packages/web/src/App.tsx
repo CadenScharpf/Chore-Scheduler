@@ -39,8 +39,7 @@ const App: React.FC = () => {
       >
         <Routes>
           <Route index element={Paths.Component} />
-          {Paths.Subpaths.map((path) => getPathRoutes(path, '/'))}     
-
+          {Paths.Subpaths.map((path) => getPathRoutes(path, '/', true))}     
         </Routes>
       </Box>
     </>

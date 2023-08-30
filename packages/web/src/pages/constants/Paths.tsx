@@ -52,10 +52,10 @@ const Paths: IPath = {
   ],
 };
 
-export const getPathRoutes = (path: IPath, parentRoute: string): React.ReactElement => {
+export const getPathRoutes = (path: IPath, parentRoute: string, protect?: boolean): React.ReactElement => {
   const absPath = parentRoute + path.Base + "/";
   return (
-  <Route path={path.Base} key={absPath + " route"} element={<ProtectedRoute key={absPath + " component"} roles={path.Roles}>{path.Component}</ProtectedRoute>} >
+  <Route path={path.Base} key={absPath + " route"} element={protect? <ProtectedRoute key={absPath + " component"} roles={path.Roles}>{path.Component}</ProtectedRoute>: path.Component} >
   {path.Subpaths.map((subpath) => getPathRoutes(subpath, absPath))}
   </Route>
   );
